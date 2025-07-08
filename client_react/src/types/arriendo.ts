@@ -13,7 +13,7 @@ export const ArriendoActivoSchema = object({ // Define el esquema de validación
 })
 
 export const tipoVehiculoEnum = {
-    Sedan: "Sedán",
+    Sedan: "Sedan",
     SUV: "SUV",
     Camioneta: "Camioneta"
 } as const
@@ -60,3 +60,13 @@ export const ArriendosTerminadosSchema = array(ArriendoTerminadoSchema)
 export type ArriendoTerminado = InferOutput<typeof ArriendoTerminadoSchema>
 export type ArriendosTerminados = InferOutput<typeof ArriendosTerminadosSchema> 
 
+
+export const CantidadPorTipoSchema = object({
+    tipoVehiculo: string(),
+    cantidad: number()
+})
+
+export const CantidadesPorTipoSchema = array(CantidadPorTipoSchema)
+
+export type CantidadPorTipo = InferOutput<typeof CantidadPorTipoSchema>
+export type CantidadesPorTipo = InferOutput<typeof CantidadesPorTipoSchema>

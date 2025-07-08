@@ -16,10 +16,10 @@ export const getArriendos = async (request: Request, response: Response) => {
 export const getCantidadArriendos = async (request: Request, response: Response) => {
     const arriendos = await Arriendo.findAll({
         attributes: [
-            'tipo_vehiculo',
-            [Sequelize.fn('COUNT', Sequelize.col('tipo_vehiculo')), 'cantidad']
+            'tipoVehiculo',
+            [Sequelize.fn('COUNT', Sequelize.col('tipo_Vehiculo')), 'cantidad']
         ],
-        group: ['tipo_vehiculo']
+        group: ['tipoVehiculo']
     })
     response.json({ data: arriendos })
 }

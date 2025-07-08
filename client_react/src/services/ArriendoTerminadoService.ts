@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../services/axiosInstance"
 import { safeParse } from "valibot"
 import { ArriendosTerminadosSchema } from "../types/arriendo"
 

@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 export function verificarToken(request: Request, response: Response, next: NextFunction){
     const authHeader = request.headers.authorization
 
-    if (!authHeader || !authHeader.startsWith('Bearer')){
+    if (!authHeader || !authHeader.startsWith('Bearer ')){
         response.status(401).json({error: 'Token no proporcionado'})
     }
 

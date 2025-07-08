@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from '../services/axiosInstance'
 import { safeParse } from "valibot"
 import { ArriendoFormSchema, ArriendosActivosSchema, ArriendoTerminadoSchema } from "../types/arriendo"
 
@@ -75,4 +75,14 @@ export async function finalizarArriendo(id: number){
         return {success: false}   
     }
 
+}
+
+export async function arriendoBorrar(arriendoId:number){
+    try {
+        const url = `${import.meta.env.VITE_API_URL }/arriendos/${arriendoId}`
+        await axios.delete(url)
+        return {success:true}
+    } catch (error) {
+        return {success:false}
+    }
 }

@@ -1,25 +1,20 @@
-import { Link } from "react-router-dom";
 import type { ArriendoTerminado } from "../types/arriendo";
 
 type ArriendoTerminadoFilaProps = {
-    arriendo: ArriendoTerminado,
-    onBorrar: (arriendoId:number) => void
+    arriendo: ArriendoTerminado
 }
 
-export default function ArriendoTerminadoFila({ arriendo, onBorrar }: ArriendoTerminadoFilaProps) {
+export default function ResumenArriendoTerminadoFila({ arriendo}: ArriendoTerminadoFilaProps){
 
     return (
         <tr>
-            <td>{arriendo.id}</td>
             <td>{arriendo.nombreCliente}</td>
-            <td>{arriendo.rutCliente}</td>
-            <td>{arriendo.tipoVehiculo}</td>
             <td>{arriendo.patenteVehiculo}</td>
             <td>{new Date(arriendo.fechaInicio).toLocaleDateString("es-CL", {
                 day: "2-digit",
                 month: "2-digit",
                 year: "numeric",
-            })}
+            })} 
             </td>
             <td>
                 {arriendo.fechaFin
@@ -29,11 +24,6 @@ export default function ArriendoTerminadoFila({ arriendo, onBorrar }: ArriendoTe
                         year: "numeric",
                     })
                     : "Sin devolución"}
-            </td>
-            <td>
-                <Link className="btn btn-danger" onClick={() => onBorrar(arriendo.id)} to={""}>
-                    <i className="bi bi-trash3-fill"></i>
-                </Link>
             </td>
         </tr>
     )

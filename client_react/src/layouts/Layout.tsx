@@ -9,7 +9,7 @@ export default function Layout() {
                 {/* SideBar */}
                 <SideBar/>
                 {/* Principal */}
-                <main className="container-fluid">
+                <main className="container-fluid" style={{ marginLeft: "280px" }}>
                     <Outlet />
                 </main>
             </div>

@@ -1,11 +1,15 @@
+
 import { Link } from "react-router-dom";
 import type { ArriendoActivo } from "../types/arriendo";
 
+
 type ArriendoActivoFilaProps = {
-    arriendo: ArriendoActivo
+    arriendo: ArriendoActivo,
+    onBorrar: (arriendoId:number) => void
 }
 
-export default function ArriendoActivoFila({ arriendo}: ArriendoActivoFilaProps){
+export default function ArriendoActivoFila({ arriendo, onBorrar}: ArriendoActivoFilaProps){
+
 
     return (
         <tr>
@@ -26,9 +30,9 @@ export default function ArriendoActivoFila({ arriendo}: ArriendoActivoFilaProps)
                 </Link>
             </td>
             <td>
-                <button className="btn btn-danger">
+                <Link className="btn btn-danger" onClick={() => onBorrar(arriendo.id)} to={""}>
                     <i className="bi bi-trash3-fill"></i>
-                </button>
+                </Link>
             </td>
                 
             

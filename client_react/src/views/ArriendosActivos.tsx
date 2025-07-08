@@ -1,7 +1,8 @@
-import { getArriendosActivos } from "../services/ArriendoActivoService"
+import { arriendoBorrar, getArriendosActivos } from "../services/ArriendoActivoService"
 import { useLoaderData } from "react-router-dom"
 import type { ArriendoActivo } from "../types/arriendo"
 import ArriendoActivoFila from "../components/ArriendoActivoFila"
+import { useState } from "react"
 
 export async function loader() {
     const arriendos = await getArriendosActivos()
@@ -9,7 +10,12 @@ export async function loader() {
 }
 
 export default function ArriendosActivos() {
-    const arriendos = useLoaderData() as ArriendoActivo[]
+    const arriendosIniciales = useLoaderData() as ArriendoActivo[]
+    const [arriendos, setArriendos] = useState(arriendosIniciales)
+    const handleBorrar = async (arriendoId:number) => {
+        await arriendoBorrar(arriendoId)
+        setArriendos(arriendos.filter(arri => arri.id !== arriendoId))
+    }
     return (
         <>
             <h2>Arriendos Activos</h2>
@@ -29,7 +35,7 @@ export default function ArriendosActivos() {
                     </thead>
                     <tbody>
                         {arriendos.map((arriendo)=>(
-                            <ArriendoActivoFila key={arriendo.id} arriendo={arriendo} />
+                            <ArriendoActivoFila key={arriendo.id} arriendo={arriendo} onBorrar={handleBorrar}/>
                         ))}       
                     </tbody>
                 </table>

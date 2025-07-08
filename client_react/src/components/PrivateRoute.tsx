@@ -8,7 +8,6 @@ export default function PrivateRoute() {
     useEffect(() => {
         if (!token) {
             navigate('/login')
-
         }
     },[token,navigate])
 

@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 export const login  = async(request:Request,response:Response)=>{
     const { email , password } = request.body
     const   SECRET = process.env.SECRET_KEY
-    console.log("Login recibido:", { email, password })
+    console.log("Login recibido:", { email, password }); // <-- agrega esto
     try{
         // buscar usuario 
         const usuario = await Usuario.findByPk(email)
@@ -45,6 +45,9 @@ export const CrearUsuario  = async(request:Request,response:Response)=>{
    }
 
 }
+
+
+
 
 export const EditarUsuario = async(request:Request,response:Response)=>{
     const { email } = request.params 

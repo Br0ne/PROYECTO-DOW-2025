@@ -9,6 +9,7 @@ import { deleteArriendo, getArriendo, getArriendos, getArriendosActivos, getArri
 const router = Router()
 
 // usuarios
+router.post('/login/crearUsuario',CrearUsuario)
 router.post('/login',login)
 
 
@@ -37,7 +38,7 @@ router.patch('/arriendos/:id', patchArriendo)
 router.delete('/arriendos/:id', deleteArriendo) 
 
 // crear usuario
-router.post('/login/crearUsuario',CrearUsuario)
+// Cambiar constrasena
 router.put('/login/:email',EditarUsuario)
 
 export default router

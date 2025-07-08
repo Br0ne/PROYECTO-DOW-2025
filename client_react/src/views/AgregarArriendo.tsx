@@ -2,14 +2,13 @@ import { Form, redirect, useActionData, type ActionFunctionArgs } from "react-ro
 import { agregarArriendo } from "../services/ArriendoActivoService"
 
 
-
-
 export async function action({ request }: ActionFunctionArgs) {
     const formData = Object.fromEntries(await request.formData())
     const resultado = await agregarArriendo(formData)
     if (!resultado?.success) {
         return resultado
     }
+    window.confirm('Arriendo añadido correctamente')
     return redirect('/arriendos/activos')
 }
 
